@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import Consola from "consola";
 import { isTextNode as isHtonTextNode, getText as getHtonText } from "./hton";
 
 const COMPONENT_NAME = "vue-edit-dom-parser";

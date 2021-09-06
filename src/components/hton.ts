@@ -140,7 +140,7 @@ export function normalizeTextNodesInPlace (children: Hton[]) {
 }
 
 export class PathBuilder {
-  static root: string = ''
+  static root = ''
 
   path: HtonPath
 
