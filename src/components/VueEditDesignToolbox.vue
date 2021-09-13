@@ -147,6 +147,7 @@ import Vue, { PropOptions } from "vue";
 import Consola from "consola";
 import { HtonPath, TextNodeOffset } from "./hton";
 import { getSelectionStartAndEndOffsets } from "./domtools";
+import Draggable from "vuedraggable";
 
 const COMPONENT_NAME = "vue-edit-design-toolbox";
 
@@ -233,6 +234,9 @@ export default Vue.extend({
   },
   data() {
     return { wrappingComponentName: "" };
+  },
+  components: {
+    VDraggable: Draggable,
   },
   computed: {
     noSelectionProperties(): boolean {
@@ -373,6 +377,8 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .vue-edit-toolbox {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: left;
   position: fixed;
   left: 0;
   bottom: 0;

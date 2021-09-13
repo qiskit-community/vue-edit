@@ -1,5 +1,12 @@
 <template>
-  <a :href="url" target="_blank" rel="noopener"><slot></slot></a>
+  <component
+    :is="inEditMode ? 'span' : 'a'"
+    class="link"
+    :href="url"
+    target="_blank"
+    rel="noopener"
+    ><slot></slot
+  ></component>
 </template>
 
 <script lang="ts">
@@ -9,12 +16,16 @@ export default Vue.extend({
   name: "TemplateLink",
   props: {
     url: String,
+    inEditMode: {
+      type: Boolean,
+      default: false,
+    },
   },
 });
 </script>
 
 <style scoped lang="scss">
-a {
+.link {
   color: #42b983;
 }
 </style>

@@ -1,7 +1,12 @@
 <template>
-  <VueEdit :components="templateComponents" design-mode>
+  <VueEdit
+    :components="templateComponents"
+    :rules="{
+      insertParagraph: ['p', 'li'],
+    }"
+    design-mode
+  >
     <HelloWorldTemplate :msg="msg">
-      <h1>{{ msg }}</h1>
       <p>
         For a guide and recipes on how to configure / customize this project,<br />
         check out the
@@ -14,16 +19,12 @@
         <li>
           <TemplateLink
             url="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel"
-            target="_blank"
-            rel="noopener"
             >babel</TemplateLink
           >
         </li>
         <li>
           <TemplateLink
             url="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript"
-            target="_blank"
-            rel="noopener"
             >typescript</TemplateLink
           >
         </li>
@@ -38,16 +39,12 @@
         <li>
           <TemplateLink
             url="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-unit-jest"
-            target="_blank"
-            rel="noopener"
             >unit-jest</TemplateLink
           >
         </li>
         <li>
           <TemplateLink
             url="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-e2e-nightwatch"
-            target="_blank"
-            rel="noopener"
             >e2e-nightwatch</TemplateLink
           >
         </li>
