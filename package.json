@@ -1,5 +1,6 @@
 {
   "name": "vue-edit",
+  "main": "src/components/lib",
   "description": "A visual editor for Vue.js projects",
   "version": "0.1.0",
   "private": true,
@@ -11,6 +12,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "consola": "^2.15.3",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-head": "^2.2.0",
@@ -30,7 +32,6 @@
     "@vue/eslint-config-typescript": "^7.0.0",
     "@vue/test-utils": "^1.0.3",
     "chromedriver": "93",
-    "consola": "^2.15.3",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "geckodriver": "^1.20.0",

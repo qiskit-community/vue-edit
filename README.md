@@ -1,5 +1,7 @@
 # vue-edit
 
+> A Vue.js component-tree editor built on top of a serializable format.
+
 ## Project setup
 ```
 npm install
