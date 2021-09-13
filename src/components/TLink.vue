@@ -13,7 +13,7 @@
 import Vue from "vue";
 
 export default Vue.extend({
-  name: "TemplateLink",
+  name: "TLink",
   props: {
     url: String,
     inEditMode: {

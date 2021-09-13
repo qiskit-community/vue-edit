@@ -1,17 +1,20 @@
 <template>
   <component :is="tag">
-    <VueEditDomParser v-if="!hton" @hton-ready="hton = $event">
+    <VueEditDomParser
+      v-if="!value"
+      @hton-ready="change({ hton: $event, path: null })"
+    >
       <slot />
     </VueEditDomParser>
     <VueEditDesign
       v-if="designMode"
       ref="design"
-      :hton="hton"
+      :hton="value"
       :components="components"
       :rules="rules"
       @hton-updated="change($event)"
     />
-    <VueEditRender v-else :hton="hton" :components="components" />
+    <VueEditRender v-else :hton="value" :components="components" />
   </component>
 </template>
 
