@@ -192,4 +192,4 @@ npm run lint
 
 ## License
 
-[Apache Licens 2.0](./blob/main/LICENSE)
+[Apache Licens 2.0](https://github.com/qiskit-community/vue-edit/blob/main/LICENSE)
