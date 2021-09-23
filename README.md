@@ -120,7 +120,7 @@ database. It just emit a `change` event every time you change the component
 tree. You may  use the regular suspects such as `vuex` or `localStorage` to
 persist the content.
 
-The [demo application]() that comes with `vue-edit` uses [`localStorage`](./blob/main/src/pages/VueEditIndex.vue#L102-L122).
+The [demo application]() that comes with `vue-edit` uses [`localStorage`](https://github.com/qiskit-community/vue-edit/blob/main/src/pages/VueEditIndex.vue#L102-L122).
 
 ### Using your own editor
 
