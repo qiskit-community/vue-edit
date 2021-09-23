@@ -1,6 +1,6 @@
 # vue-edit
 
-> A Vue.js component-tree editor built on top of a
+> A Vue.js component-tree editor built on top of an
 > [easily serializable format](#hton).
 
 ## Demo
