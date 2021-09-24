@@ -1,4 +1,3 @@
-import Consola from 'consola';
 import { mount } from '@vue/test-utils'
 import { Hton } from '@/lib/hton'
 import AppHeader from './AppHeader.vue'
