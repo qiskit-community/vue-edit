@@ -1,15 +1,24 @@
 
 <script lang="ts">
-import Vue, { CreateElement, VNode } from 'vue'
-import { ScopedSlot } from 'vue/types/vnode'
-import Consola from 'consola'
-import { getAttrs, getName, getText, Hton, HtonPath, HtonVisitorBase, TagNode, TextNode } from './hton'
+import Vue, { CreateElement, VNode } from "vue";
+import { ScopedSlot } from "vue/types/vnode";
+import Consola from "consola";
+import {
+  getAttrs,
+  getName,
+  getText,
+  Hton,
+  HtonPath,
+  HtonVisitorBase,
+  TagNode,
+  TextNode,
+} from "./hton";
 
-const COMPONENT_NAME = 'vue-edit-render'
+const COMPONENT_NAME = "vue-edit-render";
 
 export type ComponentRegistry = {
-  [key: string]: Parameters<CreateElement>[0]
-}
+  [key: string]: Parameters<CreateElement>[0];
+};
 
 /**
  * Transform a HTON tree into a hierarchy of Vue components.
@@ -45,41 +54,51 @@ export type ComponentRegistry = {
  * </app-header>
  * ```
  */
-function htonToVirtualDom (h: CreateElement, node: Hton, registry: ComponentRegistry) {
-  const builder = new VDomBuilder(h, registry)
-  return builder.visit(node)
+function htonToVirtualDom(
+  h: CreateElement,
+  node: Hton,
+  registry: ComponentRegistry
+) {
+  const builder = new VDomBuilder(h, registry);
+  return builder.visit(node);
 }
 
 export class VDomBuilder extends HtonVisitorBase<VNode | string> {
-  createElement: CreateElement
+  createElement: CreateElement;
 
-  componentRegitry: ComponentRegistry
+  componentRegitry: ComponentRegistry;
 
-  constructor (createElement: any, componentRegitry: any) {
-    super()
-    this.createElement = createElement
-    this.componentRegitry = componentRegitry
+  constructor(createElement: any, componentRegitry: any) {
+    super();
+    this.createElement = createElement;
+    this.componentRegitry = componentRegitry;
   }
 
-  visitTextNode (node: TextNode, _key: HtonPath) {
-    return getText(node)
+  visitTextNode(node: TextNode, _key: HtonPath) {
+    return getText(node);
   }
 
-  visitTagNode (node: TagNode, key: HtonPath) {
-    const slots = this.visitSlots(node, key)
-    const scopedSlots: { [key: string]: ScopedSlot | undefined } = {}
+  visitTagNode(node: TagNode, key: HtonPath) {
+    const slots = this.visitSlots(node, key);
+    const scopedSlots: { [key: string]: ScopedSlot | undefined } = {};
     for (const [slotName, vChildren] of Object.entries(slots)) {
-      scopedSlots[slotName] = function () { return vChildren }
+      scopedSlots[slotName] = function () {
+        return vChildren;
+      };
     }
 
-    const name = getName(node)
-    const attrs = getAttrs(node)
-    const vNode = this.componentRegitry[name] ?? name
-    return this.createElement(vNode, {
-      attrs,
-      props: attrs,
-      scopedSlots
-    }, this.visitChildren(node, key))
+    const name = getName(node);
+    const attrs = getAttrs(node);
+    const vNode = this.componentRegitry[name] ?? name;
+    return this.createElement(
+      vNode,
+      {
+        attrs,
+        props: attrs,
+        scopedSlots,
+      },
+      this.visitChildren(node, key)
+    );
   }
 }
 
@@ -89,21 +108,25 @@ export default Vue.extend({
     hton: {
       type: Array,
       required: false,
-      default () { return null }
+      default() {
+        return null;
+      },
     },
     components: {
       type: Object,
       required: false,
-      default () { return {} }
-    }
+      default() {
+        return {};
+      },
+    },
   },
-  render (h) {
-    const { hton, components } = this.$props
-    Consola.log('Target HTON:', hton)
-    const start = performance.now()
-    const vroot = hton && htonToVirtualDom(h, hton, components)
-    Consola.log('Render done in', performance.now() - start, 'ms')
-    return vroot || null
-  }
-})
+  render(h) {
+    const { hton, components } = this.$props;
+    Consola.log("Target HTON:", hton);
+    const start = performance.now();
+    const vroot = hton && htonToVirtualDom(h, hton, components);
+    Consola.log("Render done in", performance.now() - start, "ms");
+    return vroot || null;
+  },
+});
 </script>
