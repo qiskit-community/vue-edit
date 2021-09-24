@@ -132,7 +132,37 @@ HTON is a [serializable format](https://en.wikipedia.org/wiki/Serialization)
 for Vue.js and other component based frameworks. It represents an HTML DOM-like
 tree and the name stands for "HyperText Object Notation".
 
-HTON nodes are of two types: `tag` and `text`. Text nodes tag
+HTON nodes are of two types: `tag` and `text`. HTON nodes are 4-element tuples
+of the form:
+
+```
+[<tagname>, <children list> | <text content>, <attribute map>, <slot map>]
+```
+
+The children list, and attribute and slot maps are optional.
+
+An HTON node like:
+
+```
+[
+  'app-header',
+  [ ['#t', 'This is the header'] ],
+  { class: 'theme-dark' },
+  {
+    subtitle: [ ['strong', ['#t', 'Some subtitle']] ]
+  }
+]
+```
+
+Translates into:
+```
+<app-header class="theme-dark">
+  This is the header
+  <template name="subtitle">
+    <strong>Some subtitle</strong>
+  </template>
+</app-header>
+```
 
 ## What is missing?
 
