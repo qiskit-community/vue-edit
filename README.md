@@ -149,12 +149,12 @@ An HTON node like:
   [ ['#t', 'This is the header'] ],
   { class: 'theme-dark' },
   {
-    subtitle: [ ['strong', ['#t', 'Some subtitle']] ]
+    subtitle: [ ['strong', [ ['#t', 'Some subtitle']] ] ]
   }
 ]
 ```
 
-Translates into:
+Is equivalent to the following template in Vue.js:
 ```
 <app-header class="theme-dark">
   This is the header
