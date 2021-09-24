@@ -205,6 +205,11 @@ npm run serve
 npm run build
 ```
 
+### Deploys the landing page and demo to GitHub Pages
+```
+npm run publish:landing-page
+```
+
 ### Run the unit tests
 ```
 npm run test:unit
